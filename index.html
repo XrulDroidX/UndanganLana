@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f3f0;
+      color: #333;
+    }
+    header {
+      height: 100vh;
+      background: url('https://source.unsplash.com/1080x1920/?wedding,aceh') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 1000;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    section {
+      padding: 4rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #e4c59e;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#acara">Acara</a>
+    <a href="#lokasi">Lokasi</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#ucapan">Ucapan</a>
+  </nav>
+
+  <header>
+    <h1>Nama & Nama</h1>
+    <p>Dengan penuh cinta kami mengundang Anda ke pernikahan kami</p>
+    <p>20 Juli 2025</p>
+  </header>
+
+  <section id="acara">
+    <h2>Detail Acara</h2>
+    <p>Akad Nikah: 20 Juli 2025, 10:00 WIB</p>
+    <p>Resepsi: 20 Juli 2025, 13:00 WIB</p>
+    <p>Lokasi: Gedung Adat Aceh, Banda Aceh</p>
+  </section>
+
+  <section id="lokasi">
+    <h2>Lokasi</h2>
+    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <section id="galeri">
+    <h2>Galeri</h2>
+    <p>(Galeri foto akan ditampilkan di sini)</p>
+  </section>
+
+  <section id="ucapan">
+    <h2>Ucapan & Doa</h2>
+    <form>
+      <input type="text" placeholder="Nama Anda" required><br><br>
+      <textarea placeholder="Ucapan atau doa..." rows="4" required></textarea><br><br>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Terima kasih atas doa dan kehadiran Anda</p>
+  </footer>
+
+</body>
+</html>
