@@ -1,180 +1,221 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan Adat Aceh</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
   <style>
-    :root {
-      --primary: #a1521b;
-      --bg: #fff9f4;
+    /* Gaya dasar */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      scroll-behavior: smooth;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #333; overflow-x: hidden; }
-    header, section, footer { padding: 2rem 1rem; animation: fadeIn 1s ease-in; }
-    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); padding: 0.75rem 1rem; display: flex; justify-content: center; gap: 1rem; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); animation: slideDown 0.8s ease-in; }
-    nav a { color: var(--primary); font-weight: 600; text-decoration: none; }
-    .hero { height: 100vh; background: url('https://i.ibb.co/w7kygXB/aceh-pattern.jpg') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
-    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 1; }
-    .hero h1, .hero p { position: relative; z-index: 2; }
-    .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3rem; }
-    .hero p { font-size: 1.2rem; }
-    .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg); display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 2000; text-align: center; }
-    .popup h2 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary); }
-    .popup button { margin-top: 1.5rem; padding: 0.75rem 2rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; }
-    h2.title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 1rem; position: relative; }
-    h2.title::after { content: ""; width: 60px; height: 4px; background: var(--primary); display: block; margin: 0.5rem auto 0; border-radius: 2px; }
-    .swiper { width: 100%; height: 300px; border-radius: 10px; }
-    .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
-    form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: auto; }
-    input, textarea, button { padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
-    button.submit-btn { background-color: var(--primary); color: white; border: none; cursor: pointer; }
-    footer { text-align: center; background: var(--primary); color: white; }
-    .countdown { display: flex; justify-content: center; gap: 1.5rem; font-size: 1.5rem; margin-top: 1rem; }
-    .pengantin { text-align: center; animation: zoomIn 1s ease; }
-    .pengantin img { border-radius: 50%; width: 120px; height: 120px; object-fit: cover; margin-bottom: 0.5rem; border: 4px solid var(--primary); }
-    #music-btn { position: fixed; bottom: 1rem; right: 1rem; z-index: 1500; background: var(--primary); border-radius: 50%; padding: 1rem; color: white; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-    
-    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-    @keyframes slideDown { from {transform: translateY(-100%);} to {transform: translateY(0);} }
-    @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
 
-    @media screen and (max-width: 600px) {
-      h2.title { font-size: 1.5rem; }
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .countdown { flex-direction: column; align-items: center; }
+    .popup {
+      position: fixed;
+      z-index: 9999;
+      background: url('https://i.ibb.co/tZtHcgD/bg-popup.jpg') no-repeat center center/cover;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .popup h1 { font-size: 2em; }
+    .popup button {
+      padding: 10px 20px;
+      background: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+    }
+
+    header {
+      background: url('https://i.ibb.co/yqNH4f3/bg-aceh.jpg') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    header h1 { font-size: 2.5em; margin: 0; }
+    header p { font-size: 1.2em; }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .pengantin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pengantin img {
+      width: 120px;
+      height: 120px;
+      border-radius: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .acara {
+      background-color: #fdf3f3;
+      padding: 40px;
+      border-radius: 20px;
+    }
+
+    .icon {
+      font-size: 1.5em;
+      margin-right: 10px;
+    }
+
+    .galeri .swiper {
+      width: 100%;
+      height: 200px;
+    }
+
+    .galeri .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      background: #8B0000;
+      color: white;
+      padding: 30px 20px;
+    }
+
+    .musik-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #8B0000;
+      color: white;
+      border: none;
+      border-radius: 100%;
+      padding: 15px;
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    @media(min-width:768px) {
+      .pengantin {
+        flex-direction: row;
+        justify-content: space-around;
+      }
     }
   </style>
 </head>
 <body>
 
-<audio id="bg-music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
-<button id="music-btn" onclick="toggleMusic()">Pause</button>
-
-<div class="popup" id="popup">
-  <h2>Kepada Yth.</h2>
-  <p>Bapak/Ibu/Saudara/i</p>
-  <h2><strong>Nama Tamu</strong></h2>
-  <button onclick="startInvitation()">Buka Undangan</button>
-</div>
-
-<nav>
-  <a href="#home">Home</a>
-  <a href="#pengantin">Pengantin</a>
-  <a href="#acara">Acara</a>
-  <a href="#lokasi">Lokasi</a>
-  <a href="#galeri">Galeri</a>
-  <a href="#ucapan">Ucapan</a>
-</nav>
-
-<header class="hero" id="home">
-  <h1>Nama & Nama</h1>
-  <p>20 Juli 2025</p>
-</header>
-
-<section id="pengantin">
-  <h2 class="title">Mempelai</h2>
-  <div class="pengantin">
-    <img src="https://source.unsplash.com/150x150/?bride" alt="Mempelai Wanita">
-    <h3>Nama Wanita</h3>
-    <p>Putri dari Bapak X & Ibu Y</p>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <h1>Untuk: Tamu Undangan</h1>
+    <p>Anda diundang ke acara pernikahan kami</p>
+    <button onclick="bukaUndangan()">Buka Undangan</button>
   </div>
-  <div class="pengantin" style="margin-top: 2rem;">
-    <img src="https://source.unsplash.com/150x150/?groom" alt="Mempelai Pria">
-    <h3>Nama Pria</h3>
-    <p>Putra dari Bapak A & Ibu B</p>
-  </div>
-</section>
 
-<section id="acara">
-  <h2 class="title">Detail Acara</h2>
-  <div style="text-align:center">
-    <p>Akad Nikah: 20 Juli 2025, 10:00 WIB</p>
-    <p>Resepsi: 20 Juli 2025, 13:00 WIB</p>
-    <p>Lokasi: Gedung Adat Aceh, Banda Aceh</p>
-  </div>
-  <div class="countdown" id="countdown"></div>
-</section>
+  <!-- Musik -->
+  <audio id="bgm" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" loop></audio>
+  <button class="musik-btn" onclick="toggleMusic()">▶️</button>
 
-<section id="lokasi">
-  <h2 class="title">Lokasi</h2>
-  <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
-</section>
+  <!-- Header -->
+  <header>
+    <h1>Ana & Irfan</h1>
+    <p>12 Mei 2025</p>
+  </header>
 
-<section id="galeri">
-  <h2 class="title">Galeri</h2>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="https://source.unsplash.com/800x600/?wedding" /></div>
-      <div class="swiper-slide"><img src="https://source.unsplash.com/800x600/?couple" /></div>
-      <div class="swiper-slide"><img src="https://source.unsplash.com/800x600/?ring" /></div>
+  <!-- Profil Pengantin -->
+  <section id="pengantin">
+    <h2 style="text-align:center;">Pengantin</h2>
+    <div class="pengantin">
+      <div>
+        <img src="https://i.ibb.co/k2nCBfM/pria.jpg" alt="Pria">
+        <h3>Irfan</h3>
+        <p>Putra dari Bpk. A & Ibu B</p>
+      </div>
+      <div>
+        <img src="https://i.ibb.co/FnWH2PC/wanita.jpg" alt="Wanita">
+        <h3>Ana</h3>
+        <p>Putri dari Bpk. C & Ibu D</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="ucapan">
-  <h2 class="title">Ucapan & Doa</h2>
-  <form onsubmit="event.preventDefault(); alert('Ucapan terkirim!')">
-    <input type="text" placeholder="Nama Anda" required>
-    <textarea placeholder="Ucapan dan doa..." rows="4" required></textarea>
-    <button type="submit" class="submit-btn">Kirim</button>
-  </form>
-  <div style="text-align:center; margin-top:1rem;">
-    <a href="https://wa.me/6281234567890?text=Halo, saya akan hadir di acara pernikahan." target="_blank" style="display:inline-block; background:green; color:white; padding:0.75rem 1.5rem; border-radius:8px; text-decoration:none;">Konfirmasi via WhatsApp</a>
-  </div>
-</section>
+  <!-- Acara -->
+  <section class="acara" id="acara">
+    <h2>Acara Pernikahan</h2>
+    <p><span class="icon">⏰</span> Akad: 12 Mei 2025, 08.00 WIB</p>
+    <p><span class="icon">⏰</span> Resepsi: 12 Mei 2025, 11.00 WIB</p>
+    <p><span class="icon">📍</span> Lokasi: Meuligoe Aceh, Banda Aceh</p>
+  </section>
 
-<footer>
-  <p>Terima kasih atas doa dan kehadiran Anda</p>
-</footer>
+  <!-- Galeri -->
+  <section class="galeri">
+    <h2 style="text-align:center;">Galeri</h2>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://i.ibb.co/tLQdbXY/galeri1.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="https://i.ibb.co/yX8Rh2W/galeri2.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="https://i.ibb.co/PMJ60Xn/galeri3.jpg" alt=""></div>
+      </div>
+    </div>
+  </section>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-  function startInvitation() {
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById('bg-music').play();
-  }
+  <!-- RSVP -->
+  <section id="rsvp" style="text-align:center;">
+    <h2>Konfirmasi Kehadiran</h2>
+    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan." target="_blank"
+       style="display:inline-block; background:#25D366; color:white; padding:10px 20px; border-radius:10px; text-decoration:none;">
+      Kirim via WhatsApp
+    </a>
+  </section>
 
-  let isPlaying = true;
-  function toggleMusic() {
-    const music = document.getElementById('bg-music');
-    if (isPlaying) {
-      music.pause();
-      document.getElementById('music-btn').innerText = 'Play';
-    } else {
-      music.play();
-      document.getElementById('music-btn').innerText = 'Pause';
+  <!-- Footer -->
+  <footer>
+    <p>Terima kasih atas doa dan restu Anda</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    const popup = document.getElementById('popup');
+    const musik = document.getElementById('bgm');
+    let isPlaying = false;
+
+    function bukaUndangan() {
+      popup.style.display = 'none';
+      musik.play();
+      isPlaying = true;
     }
-    isPlaying = !isPlaying;
-  }
 
-  new Swiper('.swiper', {
-    loop: true,
-    autoplay: { delay: 3000 },
-    effect: 'fade'
-  });
-
-  const countDownDate = new Date("Jul 20, 2025 10:00:00").getTime();
-  const x = setInterval(function () {
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("countdown").innerHTML =
-      days + "h " + hours + "j " + minutes + "m " + seconds + "d ";
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("countdown").innerHTML = "Acara telah berlangsung.";
+    function toggleMusic() {
+      if (isPlaying) {
+        musik.pause();
+      } else {
+        musik.play();
+      }
+      isPlaying = !isPlaying;
     }
-  }, 1000);
-</script>
+
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: { delay: 3000 },
+    });
+  </script>
 
 </body>
 </html>
