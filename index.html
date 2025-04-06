@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <style>
     * {
       margin: 0;
@@ -14,23 +15,24 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f5f3f0;
+      background: #fff9f4;
       color: #333;
+      overflow-x: hidden;
     }
     header {
       height: 100vh;
-      background: url('https://source.unsplash.com/1080x1920/?wedding,aceh') center/cover no-repeat;
+      background: url('https://i.ibb.co/w7kygXB/aceh-pattern.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
+      padding: 2rem;
     }
     header h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
-      margin-bottom: 0.5rem;
     }
     header p {
       font-size: 1.2rem;
@@ -39,37 +41,81 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255,255,255,0.9);
-      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.95);
+      padding: 0.8rem 1rem;
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
       z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     nav a {
       text-decoration: none;
-      color: #333;
-      font-weight: bold;
+      color: #5c2e00;
+      font-weight: 600;
     }
     section {
       padding: 4rem 1rem;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
     }
     section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
       text-align: center;
+      color: #a1521b;
+    }
+    .swiper {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea, button {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #a1521b;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
     footer {
       text-align: center;
       padding: 2rem;
-      background: #e4c59e;
+      background: #a1521b;
       color: #fff;
+    }
+    #music-control {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      padding: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1001;
     }
   </style>
 </head>
 <body>
+
+  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" autoplay loop></audio>
+  <div id="music-control" onclick="toggleMusic()">⏸️</div>
 
   <nav>
     <a href="#acara">Acara</a>
@@ -92,20 +138,26 @@
   </section>
 
   <section id="lokasi">
-    <h2>Lokasi</h2>
-    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <h2>Lokasi Acara</h2>
+    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
   </section>
 
   <section id="galeri">
     <h2>Galeri</h2>
-    <p>(Galeri foto akan ditampilkan di sini)</p>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://source.unsplash.com/800x600/?wedding" /></div>
+        <div class="swiper-slide"><img src="https://source.unsplash.com/800x600/?couple" /></div>
+        <div class="swiper-slide"><img src="https://source.unsplash.com/800x600/?ring" /></div>
+      </div>
+    </div>
   </section>
 
   <section id="ucapan">
-    <h2>Ucapan & Doa</h2>
-    <form>
-      <input type="text" placeholder="Nama Anda" required><br><br>
-      <textarea placeholder="Ucapan atau doa..." rows="4" required></textarea><br><br>
+    <h2>Kirim Ucapan</h2>
+    <form onsubmit="event.preventDefault(); alert('Ucapan terkirim!')">
+      <input type="text" placeholder="Nama Anda" required>
+      <textarea placeholder="Ucapan dan doa..." rows="4" required></textarea>
       <button type="submit">Kirim</button>
     </form>
   </section>
@@ -113,6 +165,31 @@
   <footer>
     <p>Terima kasih atas doa dan kehadiran Anda</p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+      effect: 'fade'
+    });
+
+    const music = document.getElementById('bg-music');
+    const control = document.getElementById('music-control');
+    let isPlaying = true;
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        control.textContent = '▶️';
+      } else {
+        music.play();
+        control.textContent = '⏸️';
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 
 </body>
 </html>
